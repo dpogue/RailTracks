@@ -4,8 +4,6 @@ class CreateAlbums < ActiveRecord::Migration
       t.string :name
       t.integer :year
       t.references :artist
-
-      t.timestamps
     end
   end
 

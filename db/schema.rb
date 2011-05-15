@@ -13,26 +13,21 @@
 ActiveRecord::Schema.define(:version => 20110515061756) do
 
   create_table "albums", :force => true do |t|
-    t.string   "name"
-    t.integer  "year"
-    t.integer  "artist_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "name"
+    t.integer "year"
+    t.integer "artist_id"
   end
 
   create_table "artists", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
   end
 
   create_table "songs", :force => true do |t|
-    t.string   "title"
-    t.integer  "track"
-    t.integer  "artist_id"
-    t.integer  "album_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "title"
+    t.string  "file"
+    t.integer "track"
+    t.integer "artist_id"
+    t.integer "album_id"
   end
 
   create_table "users", :force => true do |t|

@@ -11,6 +11,8 @@ gem 'jquery-rails', '>= 0.2.6'
 
 gem "compass", ">= 0.11.1"
 
+gem 'ruby-mp3info'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 

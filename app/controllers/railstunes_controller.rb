@@ -9,4 +9,9 @@ class RailstunesController < ApplicationController
     @files = Dir.glob('/media/Music/*.mp3')
     render :layout => !pjax?
   end
+
+  def artists
+    @artists = Artist.all.sort_by { |a| a.name }
+    render :layout => !pjax?
+  end
 end
