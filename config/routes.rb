@@ -3,6 +3,7 @@ RailsTunes::Application.routes.draw do
 
   root :to => 'railstunes#index'
 
+  match 'stream/:song' => 'media#stream'
   match ':action' => 'railstunes', :as => :action
 
   # The priority is based upon order of creation:

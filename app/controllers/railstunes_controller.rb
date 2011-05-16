@@ -10,8 +10,20 @@ class RailstunesController < ApplicationController
     render :layout => !pjax?
   end
 
+  def songs
+    @songs = Song.all.sort_by { |s|
+      k = []
+      k << (s.artist.nil? ? '' : s.artist.name.sub(/[^a-zA-Z 0-9]+/,'').downcase)
+      k << (s.album.nil? ? '' : s.album.name.sub(/[^a-zA-Z 0-9]+/,'').downcase)
+      k << (s.track.nil? ? 0 : s.track)
+      k << s.title.sub(/[^a-zA-Z 0-9]+/,'').downcase
+      k
+    }
+    render :layout => !pjax?
+  end
+
   def artists
-    @artists = Artist.all.sort_by { |a| a.name }
+    @artists = Artist.all.sort_by { |a| a.name.downcase }
     render :layout => !pjax?
   end
 end

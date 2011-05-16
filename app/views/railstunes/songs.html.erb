@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Title</td>
+      <td>Artist</td>
+      <td>Album</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.track %></td>
+        <td><%= link_to '+', "stream/#{song.id}" %></td>
+        <td><%= song.title %></td>
+        <td><%= song.artist.name unless song.artist.nil? %></td>
+        <td><%= song.album.name unless song.album.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

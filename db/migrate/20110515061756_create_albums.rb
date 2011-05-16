@@ -5,6 +5,8 @@ class CreateAlbums < ActiveRecord::Migration
       t.integer :year
       t.references :artist
     end
+
+    add_index :albums, :artist_id, :name => 'album_artist_id_ix'
   end
 
   def self.down
