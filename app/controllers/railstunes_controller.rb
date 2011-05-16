@@ -26,4 +26,18 @@ class RailstunesController < ApplicationController
     @artists = Artist.all.sort_by { |a| a.name.downcase }
     render :layout => !pjax?
   end
+
+  def artist
+    render :action => 'artists', :layout => !pjax? unless params[:id]
+
+    a = Artist.find_by_id(params[:id])
+    @songs = a.songs.sort_by { |s|
+      k = []
+      k << (s.album.nil? ? '' : s.album.name.sub(/[^a-zA-Z 0-9]+/,'').downcase)
+      k << (s.track.nil? ? 0 : s.track)
+      k << s.title.sub(/[^a-zA-Z 0-9]+/,'').downcase
+      k
+    }
+    render :action => 'songs', :layout => !pjax?
+  end
 end

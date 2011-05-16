@@ -7,6 +7,9 @@
 @import "compass/layout/stretching";
 @import "compass/reset";
 
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:bold);
+
 html, body {
     height: 100%;
 }
@@ -17,22 +20,65 @@ body {
     position: relative;
     width: 100%;
     @include clearfix;
+    font-family: 'Droid Sans';
+}
+
+a {
+    text-decoration: none;
 }
 
 #player {
-    $experimental-support-for-svg: true;
     @include background-image(linear-gradient(top, #000000, #202020 30%));
     width: 100%;
     height: 15%;
     border-bottom: 1px solid #121212;
     @include box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0);
+    @include box-sizing(border-box);
+    padding-top: 25px;
+    position: relative;
+}
+
+#controls {
+    position: absolute;
+    top: 20%;
+    left: 50px;
+    height: 65%;
+    width: 30%;
+}
+
+#controls img {
+    height: 100%;
+}
+
+#player header {
+    margin: 0 auto;
+    width: 40%;
+    @include border-radius(15px);
+    background: black;
+    @include box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0);
+    text-align: center;
+    height: 75%;
+    color: #84BCDE;
+}
+
+#player header h1 {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Droid Serif';
+}
+
+#player header .spinner {
+    height: 100%;
+    width: 10%;
+    position: relative;
+    display: none;
 }
 
 #sidebar {
     min-width: 250px;
     height: 85%;
     @include float-left;
-    @include stretch-y(150px, 0);
+    @include stretch-y(16%, 0);
     display: block;
     overflow: auto;
     padding: 5px 0;
@@ -54,14 +100,15 @@ body {
     background: rgba(255, 255, 255, 0.05);
     @include stretch-x(250px, 0);
     @include float-left;
-    padding: 5px 10px;
     height: 84%;
     overflow: auto;
 }
 
 table {
     width: 100%;
-    height: 99%;
+    max-height: 99%;
+    table-layout: fixed;
+    text-shadow: black 0 1px;
 }
 
 tr {
@@ -83,8 +130,104 @@ tbody tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+tbody tr.current {
+    background-color: rgba(132, 188, 222, 0.5);
+}
+
 tbody tr td:first-child {
     text-align: right;
     padding-right: 10px;
     opacity: 0.5;
+    min-width: 25px;
+    text-shadow: none;
+}
+
+.spinner {
+    @include inline-block;
+
+    div {
+        @include opacity(0);
+        width: 12%;
+        height: 26%;
+        left: 44.5%;
+        top: 37%;
+        background: #6C6C6C;
+        position: absolute;
+        @include border-radius(50px);
+        @include box-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+        @include experimental(animation-name, fade, -moz, -webkit, not -o, not -ms, not -khtml, official);
+        @include experimental(animation-duration, 1s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+        @include experimental(animation-timing-function, linear, -moz, -webkit, not -o, not -ms, not -khtml, official);
+        @include experimental(animation-iteration-count, infinite, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar1 {
+        @include transform(rotate(0deg) translate(0, -142%));
+        @include experimental(animation-delay, 0s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar2 {
+        @include transform(rotate(30deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.9167s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar3 {
+        @include transform(rotate(60deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar4 {
+        @include transform(rotate(90deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.75s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar5 {
+        @include transform(rotate(120deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar6 {
+        @include transform(rotate(150deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.5833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar7 {
+        @include transform(rotate(180deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.5s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar8 {
+        @include transform(rotate(210deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.41667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar9 {
+        @include transform(rotate(240deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.333s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar10 {
+        @include transform(rotate(270deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.25s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar11 {
+        @include transform(rotate(300deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.1667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+
+    .bar12 {
+        @include transform(rotate(330deg) translate(0, -142%));
+        @include experimental(animation-delay, -0.0833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0.25; }
+}
+
+@-moz-keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0.25; }
 }

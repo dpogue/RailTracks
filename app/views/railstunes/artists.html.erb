@@ -1,5 +1,5 @@
 <ul>
 <% @artists.each do |f| %>
-  <li><%= f.name %></li>
+  <li><%= link_to f.name, "artist/#{f.id}", {'data-pjax' => '#main'} %></li>
 <% end %>
 </ul>

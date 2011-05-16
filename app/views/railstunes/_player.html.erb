@@ -1,5 +1,31 @@
 <div id="player">
+  <div id="controls">
+    <a href="#" onClick="player.pause();return false;">
+      <%= image_tag('player/pause.png', :border=>0) %>
+    </a>
+    <a href="#" onClick="player.play();return false;">
+      <%= image_tag('player/play.png', :border=>0) %>
+    </a>
+  </div>
   <header>
-    <h1>Hello World</h1>
+    <h1 id="songtitle"></h1>
+    <h2 id="songinfo"></h2>
+    <div class="spinner"> 
+      <div class="bar1"></div> 
+      <div class="bar2"></div> 
+      <div class="bar3"></div> 
+      <div class="bar4"></div> 
+      <div class="bar5"></div> 
+      <div class="bar6"></div> 
+      <div class="bar7"></div> 
+      <div class="bar8"></div> 
+      <div class="bar9"></div> 
+      <div class="bar10"></div> 
+      <div class="bar11"></div> 
+      <div class="bar12"></div> 
+    </div> 
   </header>
+  <audio id="rtPlayer"></audio>
+  <script>$(function(){player=new rtPlayer('#rtPlayer');});</script>
+  It's <%= Time.now.strftime '%I:%M:%S %p' %>
 </div>
