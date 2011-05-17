@@ -28,6 +28,16 @@ a {
     color: #C6C6C6;
 }
 
+#alert {
+    width: 50%;
+    margin: 0 25%;
+    position: absolute;
+    z-index: 1;
+    background: #602F2F;
+    padding: 15px;
+    @include border-bottom-radius(10px);
+}
+
 #player {
     @include background-image(linear-gradient(top, #000000, #202020 30%));
     width: 100%;

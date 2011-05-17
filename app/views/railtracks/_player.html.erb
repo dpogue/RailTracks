@@ -1,4 +1,3 @@
-<div id="player">
   <div id="controls">
     <a href="#" onClick="player.pause();return false;">
       <%= image_tag('player/pause.png', :border=>0) %>
@@ -27,5 +26,5 @@
   </header>
   <audio id="rtPlayer"></audio>
   <script>$(function(){player=new rtPlayer('#rtPlayer');});</script>
+  <%# This is a simple way to test pjax support %>
   It's <%= Time.now.strftime '%I:%M:%S %p' %>
-</div>

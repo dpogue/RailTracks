@@ -15,12 +15,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <%= render :partial => 'player' %>
-  <%= render :partial => 'sidebar' %>
-<% end %>
+  <% if notice %><div id="notice"><%= notice %></div><% end %>
+  <% if alert %><div id="alert"><%= alert %></div><% end %>
+  <div id="player">
+<%= render :partial => 'player' if user_signed_in? %>
+  </div>
+  <div id="sidebar">
+<%= render :partial => 'sidebar' if user_signed_in? %>
+  </div>
   <div id="main">
 <%= yield %>
   </div>
