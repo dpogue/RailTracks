@@ -6,6 +6,7 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'rails-settings', :git => "git://github.com/100hz/rails-settings.git"
 
 gem 'jquery-rails', '>= 0.2.6'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515061756) do
+ActiveRecord::Schema.define(:version => 20110517040922) do
 
   create_table "albums", :force => true do |t|
     t.string  "name"
@@ -18,11 +18,20 @@ ActiveRecord::Schema.define(:version => 20110515061756) do
     t.integer "artist_id"
   end
 
-  add_index "albums", ["artist_id"], :name => "album_artist_id_ix"
-
   create_table "artists", :force => true do |t|
     t.string "name"
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "var",                      :null => false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", :limit => 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
   create_table "songs", :force => true do |t|
     t.string  "title"
@@ -31,10 +40,6 @@ ActiveRecord::Schema.define(:version => 20110515061756) do
     t.integer "artist_id"
     t.integer "album_id"
   end
-
-  add_index "songs", ["album_id"], :name => "album_id_ix"
-  add_index "songs", ["artist_id"], :name => "artist_id_ix"
-  add_index "songs", ["file"], :name => "filename_ix"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

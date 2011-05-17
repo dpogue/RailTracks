@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/100hz/rails-settings.git
+  revision: 330b958bc6a4a196a35ab190eec0ba917b411060
+  specs:
+    rails-settings (0.1.1)
+      rails (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -92,5 +99,6 @@ DEPENDENCIES
   devise
   jquery-rails (>= 0.2.6)
   rails (= 3.0.7)
+  rails-settings!
   ruby-mp3info
   sqlite3

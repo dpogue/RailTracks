@@ -1,12 +1,7 @@
-class RailstunesController < ApplicationController
+class RailtracksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    render :layout => !pjax?
-  end
-
-  def list
-    @files = Dir.glob('/media/Music/*.mp3')
     render :layout => !pjax?
   end
 
@@ -23,8 +18,19 @@ class RailstunesController < ApplicationController
   end
 
   def artists
-    @artists = Artist.all.sort_by { |a| a.name.downcase }
-    render :layout => !pjax?
+    params[:id] = '0' unless params[:id]
+    numeric = true if Float(params[:id]) rescue false
+    if numeric
+      @artists = Artist.find(:all, :order => :name, :offset => (50*params[:id].to_i), :limit => 50)
+      return render :status => 204 if @artists.empty?
+    else
+      @artists = Artist.find(:all, :conditions => ['name LIKE ?', "#{params[:id].chr}%"], :order => :name)
+    end
+
+    respond_to do |format|
+      format.json { render :json => @artists }
+      format.html { render :layout => !pjax? }
+    end
   end
 
   def artist

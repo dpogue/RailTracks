@@ -1,4 +1,6 @@
 class MediaController < ApplicationController
+  before_filter :authenticate_user!
+
   def stream
     return if params[:id].nil?
 

@@ -1,10 +1,10 @@
 RailsTunes::Application.routes.draw do
   devise_for :users
 
-  root :to => 'railstunes#index'
+  root :to => 'railtracks#index'
 
   match 'media/:action(/:id)' => 'media'
-  match ':action(/:id)' => 'railstunes'
+  match ':action(/:id)' => 'railtracks'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
