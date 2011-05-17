@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% @songs.each do |song| %>
-      <tr id="song-<%= song.id %>">
+      <tr class="songlink" id="song-<%= song.id %>">
         <td><%= song.track %></td>
         <td><%= image_tag('add.png', :border=>0) %></td>
         <td>

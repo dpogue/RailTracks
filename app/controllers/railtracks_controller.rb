@@ -5,6 +5,8 @@ class RailtracksController < ApplicationController
     render :layout => !pjax?
   end
 
+  # SLOW AND PAINFUL
+  # Do not use this function!
   def songs
     @songs = Song.all.sort_by { |s|
       k = []
@@ -21,10 +23,21 @@ class RailtracksController < ApplicationController
     params[:id] = '0' unless params[:id]
     numeric = true if Float(params[:id]) rescue false
     if numeric
-      @artists = Artist.find(:all, :order => :name, :offset => (50*params[:id].to_i), :limit => 50)
-      return render :status => 204 if @artists.empty?
+      @artists = Artist.find(:all,
+                             :order => 'upper(name)',
+                             :offset => (50*params[:id].to_i),
+                             :limit => 50)
+      if @artists.empty?
+        respond_to do |format|
+          format.json { render :json => @artists, :status => 204 }
+          format.html { render :layout => false, :status => 204 }
+        end
+        return
+      end
     else
-      @artists = Artist.find(:all, :conditions => ['name LIKE ?', "#{params[:id].chr}%"], :order => :name)
+      @artists = Artist.find(:all,
+                             :conditions => ['name LIKE ?', "#{params[:id].chr}%"], 
+                             :order => 'upper(name)')
     end
 
     respond_to do |format|

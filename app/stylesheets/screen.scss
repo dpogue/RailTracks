@@ -25,6 +25,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #C6C6C6;
 }
 
 #player {
@@ -134,7 +135,7 @@ tbody tr.current {
     background-color: rgba(132, 188, 222, 0.5);
 }
 
-tbody tr td:first-child {
+.songlink td:first-child {
     text-align: right;
     padding-right: 10px;
     opacity: 0.5;
@@ -151,7 +152,7 @@ tbody tr td:first-child {
         height: 26%;
         left: 44.5%;
         top: 37%;
-        background: #6C6C6C;
+        background: #C6C6C6;
         position: absolute;
         @include border-radius(50px);
         @include box-shadow(0 0 3px rgba(0, 0, 0, 0.2));

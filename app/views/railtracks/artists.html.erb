@@ -1,5 +1,54 @@
-<ul>
-<% @artists.each do |f| %>
-  <li><%= link_to f.name, "artist/#{f.id}", {'data-pjax' => '#main'} %></li>
-<% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 40px;"></th>
+      <th>Artist Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @artists.each do |art| %>
+    <tr>
+      <td></td>
+      <td>
+        <%= link_to art.name, {:action => 'artist', :id => art.id}, {'data-pjax' => '#main'} %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+function load_artists(page)
+{
+  var success = function(data, stat, jqxhr)
+  {
+    console.log(jqxhr);
+    var ii = data.length;
+    for (var i = 0; i < ii; i++)
+    {
+      var row = '<tr><td></td><td>';
+      row += '<a href="/artist/'+data[i].artist.id+'" data-pjax="#main">';
+      row += data[i].artist.name
+      row += '</a>';
+      row += '</td></tr>';
+      $('#main tbody').append(row);
+    }
+
+    if (jqxhr.status === 204)
+    {
+      return;
+    }
+
+    load_artists(page+1);
+  };
+
+  $.ajax({
+    url: '/artists/'+page+'.json',
+    async: true,
+    type: 'GET',
+    success: success
+  });
+}
+
+load_artists(1);
+</script>
