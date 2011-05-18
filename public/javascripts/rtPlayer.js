@@ -1,77 +1,52 @@
-var rtPlayer = function(element)
+var rtPlayer = function(player_id)
 {
-    var obj = this;
-    var element = $(element);
+    var self = this;
 
-    this.getElement = function()
-    {
-        return element;
-    }
+    var root = $(player_id);
+    this.cursong = null;
 
-    this.setSource = function(src)
-    {
-        element.attr('src', src);
-    }
+    this.title = root.find('h1');
+    this.subtitle = root.find('h2');
+    this.spinner = root.find('.spinner');
 
-    this.pause = function()
-    {
-        element.get(0).pause();
-    }
+    this.audio = root.find('audio');
 
-    this.play = function()
-    {
-        element.get(0).play();
-    }
+    this.audio.bind('ended', function() {
+        self.title.fadeOut('slow');
+        self.subtitle.fadeOut('slow');
+        if (self.cursong) { $(self.cursong).removeClass('current'); self.cursong = null; }
+    });
 
-    this.setVolume = function(vol)
-    {
-        element.get(0).volume = vol;
-    }
+    this.play_file = function(id) {
+        if (self.cursong) { $(self.cursong).removeClass('current'); }
+        self.title.hide();
+        self.subtitle.hide();
+        self.spinner.show();
 
-    this.getVolume = function()
-    {
-        return element.get(0).volume;
-    }
+        var success = function(data, s, jqxhr) {
+            self.audio.attr('src', data.url);
+            self.audio.get(0).play();
 
-    this.getTime = function()
-    {
-        return element.get(0).currentTime;
-    }
+            self.cursong = '#song-'+data.id;
+            $(self.cursong).addClass('current');
 
-    this.setTime = function(time)
-    {
-        element.get(0).currentTime = time;
-    }
+            self.audio.bind('playing', function() {
+                self.spinner.hide();
+                self.title.html(data.title).fadeIn('slow');
+                self.subtitle.html(data.artist + ' &nbsp;&mdash;&nbsp; ' + data.album).fadeIn('slow');
+            });
+        };
 
-    this.getLength = function()
-    {
-        return element.get(0).duration;
-    }
+        $.ajax({
+            url: '/media/info/' + id,
+            success: success,
+            type: 'GET'
+        });
+    };
+
+    this.on_page_load = function() {
+        if (self.cursong) { $(self.cursong).addClass('current'); }
+    };
 };
 
 var player = null;
-
-function play_file(id)
-{
-    $('#player h1').hide();
-    $('#player h2').hide();
-    $('#player .spinner').show();
-
-    var success = function(data, stat, jqXHR) {
-        player.setSource(data.url);
-
-        $('#song-'+data.id).addClass('current');
-
-        $('#player .spinner').hide();
-        $('#player h1').html(data.title).fadeIn('slow');
-        $('#player h2').html(data.artist + ' &mdash; ' + data.album).fadeIn('slow');
-
-        player.play();
-    };
-
-    $.ajax({
-        url: '/media/info/' + id,
-        success: success,
-        type: 'GET'
-    });
-}

@@ -27,6 +27,14 @@
 <%= yield %>
   </div>
 
-  <script>$(function(){$('a[data-pjax]').pjax();console.log('enabled pjax');$('#main').bind('end.pjax',function(){$('a[data-pjax]').pjax();})});</script>
+  <script>
+    $(function(){
+      $('a[data-pjax]').pjax();
+      $('#main').bind('end.pjax',function(){
+        $('a[data-pjax]').pjax();
+        if (player) { player.on_page_load(); }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -70,18 +70,24 @@ a {
     text-align: center;
     height: 75%;
     color: #84BCDE;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #player header h1 {
     font-size: 2em;
     font-weight: bold;
     font-family: 'Droid Serif';
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #player header .spinner {
     height: 100%;
     width: 10%;
     position: relative;
+    margin: 0 auto;
     display: none;
 }
 

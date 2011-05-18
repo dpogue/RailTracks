@@ -22,16 +22,20 @@ function load_artists(page)
 {
   var success = function(data, stat, jqxhr)
   {
-    console.log(jqxhr);
     var ii = data.length;
     for (var i = 0; i < ii; i++)
     {
-      var row = '<tr><td></td><td>';
-      row += '<a href="/artist/'+data[i].artist.id+'" data-pjax="#main">';
-      row += data[i].artist.name
-      row += '</a>';
-      row += '</td></tr>';
-      $('#main tbody').append(row);
+      $('#main tbody').append(
+        $('<tr><td></td></tr>').append(
+          $('<td />').append(
+            $('<a />', {
+                'href':'/artist/'+data[i].artist.id,
+                'data-pjax':'#main',
+                text:data[i].artist.name
+            }).pjax()
+          )
+        )
+      );
     }
 
     if (jqxhr.status === 204)
