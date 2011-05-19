@@ -31,7 +31,6 @@
     $(function(){
       $('a[data-pjax]').pjax();
       $('#main').bind('end.pjax',function(){
-        $('a[data-pjax]').pjax();
         if (player) { player.on_page_load(); }
       });
     });
