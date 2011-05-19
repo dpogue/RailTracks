@@ -46,11 +46,15 @@ function load_artists(page)
     load_artists(page+1);
   };
 
-  $.ajax({
+  var request = $.ajax({
     url: '/artists/'+page+'.json',
     async: true,
     type: 'GET',
     success: success
+  });
+
+  $('a[data-pjax]').bind('click', function() {
+    request.abort();
   });
 }
 

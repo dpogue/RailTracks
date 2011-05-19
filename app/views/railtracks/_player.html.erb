@@ -1,9 +1,9 @@
-  <div id="controls">
-    <a href="#" onClick="player.pause();return false;">
-      <%= image_tag('player/pause.png', :border=>0) %>
-    </a>
-    <a href="#" onClick="player.play();return false;">
+  <div id="transport">
+    <a href="#" id="btnmain">
       <%= image_tag('player/play.png', :border=>0) %>
+    </a>
+    <a href="#" id="btnstop">
+      <%= image_tag('player/stop.png', :border=>0) %>
     </a>
   </div>
   <header>
@@ -27,4 +27,4 @@
   <audio></audio>
   <script>$(function(){player=new rtPlayer('#player');});</script>
   <%# This is a simple way to test pjax support %>
-  It's <%= Time.now.strftime '%I:%M:%S %p' %>
+  <!-- It's <%= Time.now.strftime '%I:%M:%S %p' %> -->
