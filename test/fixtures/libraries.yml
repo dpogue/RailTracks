@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  path: MyString
+  recursive: false
+  scanned: 2011-05-19 10:04:10
+
+two:
+  path: MyString
+  recursive: false
+  scanned: 2011-05-19 10:04:10

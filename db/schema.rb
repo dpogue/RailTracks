@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517040922) do
+ActiveRecord::Schema.define(:version => 20110519170410) do
 
   create_table "albums", :force => true do |t|
     t.string  "name"
@@ -18,8 +18,18 @@ ActiveRecord::Schema.define(:version => 20110517040922) do
     t.integer "artist_id"
   end
 
+  add_index "albums", ["artist_id"], :name => "album_artist_id_ix"
+
   create_table "artists", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "path"
+    t.boolean  "recursive"
+    t.datetime "scanned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settings", :force => true do |t|
@@ -39,7 +49,12 @@ ActiveRecord::Schema.define(:version => 20110517040922) do
     t.integer "track"
     t.integer "artist_id"
     t.integer "album_id"
+    t.integer "library_id"
   end
+
+  add_index "songs", ["album_id"], :name => "album_id_ix"
+  add_index "songs", ["artist_id"], :name => "artist_id_ix"
+  add_index "songs", ["file"], :name => "filename_ix"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
