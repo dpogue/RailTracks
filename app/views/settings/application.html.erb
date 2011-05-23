@@ -1,0 +1,14 @@
+<%= render :partial => 'tabs' %>
+<h2>Application Settings</h2>
+<%= form_tag(:controller => 'settings', :action => 'update_application') do |f| %>
+  <%= check_box(:settings, 'lastfm.enabled') %>
+  <%= label_tag('settings[lastfm.enabled]', "Enable Last.fm Submissions") %>
+  <br>
+  <%= label_tag('settings[lastfm.api]', "Last.fm API Key") %><br>
+  <%= text_field(:settings, 'lastfm.api') %>
+  <br>
+  <%= label_tag('settings[lastfm.secret]', "Last.fm Secret Key") %><br>
+  <%= text_field(:settings, 'lastfm.secret') %>
+  <br>
+  <%= submit_tag('Save Settings') %>
+<% end %>

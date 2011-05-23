@@ -14,9 +14,7 @@ var rtPlayer = function(player_id)
     this.btnMain = root.find('#btnmain');
 
     this.play_file = function(id) {
-        if (self.cursong) { $(self.cursong).removeClass('current'); }
-        self.title.hide();
-        self.subtitle.hide();
+        this.stop();
         self.spinner.show();
 
         var success = function(data, s, jqxhr) {

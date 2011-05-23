@@ -40,6 +40,8 @@ class RailtracksController < ApplicationController
                              :order => 'upper(name)')
     end
 
+    @doajaxload = (params[:id] == '0')
+
     respond_to do |format|
       format.json { render :json => @artists }
       format.html { render :layout => !pjax? }

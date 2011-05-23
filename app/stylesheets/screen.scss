@@ -116,14 +116,17 @@ a {
     display: none;
 }
 
-#sidebar {
-    min-width: 250px;
+#wrapper {
+    @include display-box;
+    @include box-orient(horizontal);
+    @include box-align(stretch);
+    width: 100%;
     height: 85%;
-    @include float-left;
-    @include stretch-y(16%, 0);
-    display: block;
-    overflow: auto;
+}
+
+#sidebar {
     padding: 5px 0;
+    width: 20%;
 }
 
 #sidebar nav a {
@@ -142,13 +145,67 @@ a {
     @include background-image(linear-gradient(top, #6C6C6C, #2F2F2F));
 }
 
+#sidebar .bottom {
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.25);
+    @include box-shadow(rgba(0, 0, 0, 0.8) 1px -1px 5px);
+    @include border-top-right-radius(5px);
+}
+
+#sidebar .bottom a {
+    display: inline-block;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+#sidebar .panel {
+    margin-left: 20px;
+    display: none;
+}
+
+#sidebar .panel a {
+    width: 30px;
+    padding: 5px 0;
+    text-align: center;
+    display: inline-block;
+}
+
 #main {
-    @include box-shadow(rgba(255, 255, 255, 0.1) -1px 0 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0 inset);
+    @include box-shadow(rgba(255, 255, 255, 0.1) -1px 0 0, rgba(0, 0, 0, 0.8) 0 1px 7px inset);
     background: rgba(255, 255, 255, 0.05);
-    @include stretch-x(250px, 0);
-    @include float-left;
-    height: 85%;
-    overflow: auto;
+    overflow-y: scroll;
+    width: 80%;
+}
+
+#main h2 {
+    font-weight: bold;
+    font-size: 2em;
+    text-decoration: underline;
+    margin: 0.25em 0.5em;
+}
+
+#main form {
+    margin: 15px;
+}
+
+#main nav {
+    @include background-image(linear-gradient(#484848, #484848));
+    @include box-shadow(rgba(0, 0, 0, 0.8) 0 1px 7px);
+    padding: 5px 10px 0;
+    display: block;
+}
+
+#main nav li {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #212121;
+    border-bottom: 0 none;
+    @include border-top-radius(10px);
+}
+
+#main nav li.selected {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 table {
@@ -277,4 +334,13 @@ tbody tr.current {
 @-moz-keyframes fade {
     from { opacity: 1; }
     to { opacity: 0.25; }
+}
+
+input {
+    border: 2px solid #212121;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+    border: 2px solid #C6C6C6;
 }

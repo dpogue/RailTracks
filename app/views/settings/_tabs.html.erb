@@ -1,0 +1,11 @@
+<nav><ul>
+  <li<% if @curtab == 'application' %> class="selected"<% end %>>
+    <%= link_to 'Application Settings', {:controller => 'settings', :action => 'application'}, {'data-pjax' => '#main'} %>
+  </li>
+  <li<% if @curtab == 'user' %> class="selected"<% end %>>
+    User Settings
+  </li>
+  <li<% if @curtab == 'library' %> class="selected"<% end %>>
+    Library Settings
+  </li>
+</ul></nav>

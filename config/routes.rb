@@ -4,6 +4,7 @@ RailsTunes::Application.routes.draw do
   root :to => 'railtracks#index'
 
   match 'media/:action(/:id)' => 'media'
+  match 'settings/(:action(/:id))' => 'settings'
   match ':action(/:id)' => 'railtracks'
 
   # The priority is based upon order of creation:

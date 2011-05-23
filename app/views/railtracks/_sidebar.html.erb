@@ -1,10 +1,24 @@
   <nav><ul>
-    <li><%= link_to 'All Music', {:action => 'songs'}, {'data-pjax' => '#main'} %></li>
-    <li><%= link_to 'Artists', {:action => 'artists'}, {'data-pjax' => '#main'} %></li>
+    <li><%= link_to 'All Music', {:controller => 'railtracks', :action => 'songs'}, {'data-pjax' => '#main'} %></li>
+    <li><%= link_to 'Artists', {:controller => 'railtracks', :action => 'artists', :id => 0}, {'data-pjax' => '#main'} %>
+    <div class="panel">
+      <% ('a'..'z').to_a.each do |key| %>
+        <%= link_to key.upcase, {:controller => 'railtracks', :action => 'artists', :id => key}, {'data-pjax' => '#main'} %>
+      <% end %>
+    </div>
+    </li>
   </ul></nav>
+  <div class="bottom">
+    <%= link_to(image_tag('settings.png', :border => 0), {:controller => 'settings'}, {'data-pjax' => '#main'}) %>
+    <%= link_to(image_tag('logout.png', :border => 0), {:action=>"destroy", :controller=>"devise/sessions"}) %>
+  </div>
   <script>
-    $('#sidebar a').live('click', function() {
-      $('#sidebar .open').removeClass('open');
+    $('#sidebar nav li > a').live('click', function() {
+      $('#sidebar .open').removeClass('open').siblings('.panel').hide();
       $(this).addClass('open');
+      $(this).siblings('.panel').show();
+    });
+    $('#sidebar .bottom a').live('click', function() {
+      $('#sidebar .open').removeClass('open').siblings('.panel').hide();
     });
   </script>

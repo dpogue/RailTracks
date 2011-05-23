@@ -18,13 +18,15 @@
   <% if notice %><div id="notice"><%= notice %></div><% end %>
   <% if alert %><div id="alert"><%= alert %></div><% end %>
   <div id="player">
-<%= render :partial => 'player' if user_signed_in? %>
+<%= render :partial => 'railtracks/player' if user_signed_in? %>
   </div>
-  <div id="sidebar">
-<%= render :partial => 'sidebar' if user_signed_in? %>
-  </div>
-  <div id="main">
+  <div id="wrapper">
+    <div id="sidebar">
+<%= render :partial => 'railtracks/sidebar' if user_signed_in? %>
+    </div>
+    <div id="main">
 <%= yield %>
+    </div>
   </div>
 
   <script>
@@ -32,7 +34,11 @@
       $('a[data-pjax]').pjax();
       $('#main').bind('end.pjax',function(){
         if (player) { player.on_page_load(); }
+        $('#main').scrollTop();
       });
+    <% if notice %>
+      $('#notice').bind('click', function() { $(this).fadeOut('slow'); });
+    <% end %>
     });
   </script>
 </body>

@@ -17,6 +17,7 @@
   </tbody>
 </table>
 
+<% if @doajaxload %>
 <script>
 function load_artists(page)
 {
@@ -60,3 +61,4 @@ function load_artists(page)
 
 load_artists(1);
 </script>
+<% end %>

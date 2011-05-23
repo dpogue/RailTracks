@@ -5,8 +5,10 @@ namespace :tracks do
   task :fetch => :environment do
     Library.all.each do |lib|
       p = lib.path
-      Dir.glob(p + (p.end_with?('/') ? '' : '/') + '**/*.mp3').each do |f|
-        print f + ' :: '
+      p += '/' unless p.end_with?('/')
+      p += '**/' if lib.recursive
+      Dir.glob(p + '*.mp3').each do |f|
+        #print f + ' :: '
         tags = Mp3Info.open(f, :encoding => 'utf-8').tag
 
         if tags['artist'].nil?
