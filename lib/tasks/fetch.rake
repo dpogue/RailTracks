@@ -8,7 +8,7 @@ namespace :tracks do
       p += '/' unless p.end_with?('/')
       p += '**/' if lib.recursive
       Dir.glob(p + '*.mp3').each do |f|
-        #print f + ' :: '
+        print f + ' :: '
         tags = Mp3Info.open(f, :encoding => 'utf-8').tag
 
         if tags['artist'].nil?
