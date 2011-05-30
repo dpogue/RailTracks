@@ -1,21 +1,11 @@
-<table>
-  <thead>
-    <tr>
-      <th style="width: 40px;"></th>
-      <th>Artist Name</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @artists.each do |art| %>
-    <tr>
-      <td></td>
-      <td>
-        <%= link_to art.name, {:action => 'artist', :id => art.id}, {'data-pjax' => '#main'} %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<ul class="list">
+  <li class="title">Artist Name</li>
+<% @artists.each do |artist| %>
+  <li>
+    <%= link_to artist.name, {:action => 'artist', :id => artist.id}, {'data-pjax' => '#main' } %>
+  </li>
+<% end %>
+</ul>
 
 <% if @doajaxload %>
 <script>
@@ -26,15 +16,13 @@ function load_artists(page)
     var ii = data.length;
     for (var i = 0; i < ii; i++)
     {
-      $('#main tbody').append(
-        $('<tr><td></td></tr>').append(
-          $('<td />').append(
-            $('<a />', {
-                'href':'/artist/'+data[i].artist.id,
-                'data-pjax':'#main',
-                text:data[i].artist.name
-            })
-          )
+      $('ul.list').append(
+        $('<li />').append(
+          $('<a />', {
+              'href':'/artist/'+data[i].artist.id,
+              'data-pjax':'#main',
+              text:data[i].artist.name
+          })
         )
       );
     }

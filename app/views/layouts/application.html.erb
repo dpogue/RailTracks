@@ -2,11 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
   <title>RailTracks</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+  <%= stylesheet_link_tag 'style.css', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'print.css', :media => 'print' %>
-  <!--[if IE]><%= stylesheet_link_tag 'ie.css', :media => 'screen, projection' %><![endif]-->
+  <%= stylesheet_link_tag 'portrait.css', :media => 'screen and (max-width: 320px)' %>
+  <%= stylesheet_link_tag 'landscape.css', :media => 'screen and (min-width: 321px) and (max-width: 480px)' %>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='javascripts/jquery.min.js'>\x3C/script>")</script>
@@ -17,16 +21,19 @@
 <body>
   <% if notice %><div id="notice"><%= notice %></div><% end %>
   <% if alert %><div id="alert"><%= alert %></div><% end %>
-  <div id="player">
-<%= render :partial => 'railtracks/player' if user_signed_in? %>
-  </div>
-  <div id="wrapper">
-    <div id="sidebar">
-<%= render :partial => 'railtracks/sidebar' if user_signed_in? %>
-    </div>
-    <div id="main">
-<%= yield %>
-    </div>
+
+  <div id="layout">
+    <nav>
+      <%= render :partial => 'railtracks/sidebar' if user_signed_in? %>
+    </nav>
+    <section>
+      <div id="player">
+        <%= render :partial => 'railtracks/player' if user_signed_in? %>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -40,6 +47,17 @@
       $('#notice').bind('click', function() { $(this).fadeOut('slow'); });
     <% end %>
     });
+
+    /* Canvas fallback for SVG icons */
+    if (!!document.createElementNS &&
+        !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect)
+    {
+      $.getScript('http://canvg.googlecode.com/svn/trunk/rgbcolor.js', function() {
+        $.getScript('http://canvg.googlecode.com/svn/trunk/canvg.js', function() {
+          canvg();
+        });
+      });
+    }
   </script>
 </body>
 </html>

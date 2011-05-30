@@ -1,44 +1,13 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 @import "compass";
-@import "compass/layout/stretching";
-@import "compass/reset";
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif:bold);
-
-html, body {
-    height: 100%;
-}
-
+html,
 body {
-    background: steelblue; /*#2F2F2F;*/
-    color: rgba(255, 255, 255, 0.75);
-    position: relative;
+    height: 100%;
     width: 100%;
-    @include clearfix;
-    font-family: 'Droid Sans';
 }
 
-a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
-}
-
+#notice,
 #alert {
-    width: 50%;
-    margin: 0 25%;
-    position: absolute;
-    z-index: 1;
-    background: #602F2F;
-    padding: 15px;
-    @include border-bottom-radius(10px);
-}
-
-#notice {
     width: 50%;
     margin: 0 25%;
     position: absolute;
@@ -48,299 +17,77 @@ a {
     @include border-bottom-radius(10px);
 }
 
-#player {
-    @include background-image(linear-gradient(top, #000000, #202020 30%));
-    width: 100%;
-    height: 15%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.75);
-    @include box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0);
-    @include box-sizing(border-box);
-    padding-top: 25px;
-    position: relative;
-}
-
-#transport {
-    position: absolute;
-    top: 20%;
-    left: 50px;
-    height: 65%;
-    width: 30%;
-}
-
-#transport a {
-    @include opacity(0.5);
-    cursor: default;
-}
-
-#transport a.enabled {
-    @include opacity(1);
-    cursor: pointer;
-}
-
-#transport img {
-    height: 75%;
-    vertical-align: middle;
-}
-
-#btnmain img {
-    height: 100%;
-}
-
-#player header {
-    margin: 0 auto;
-    width: 40%;
-    @include border-radius(15px);
-    background: black;
-    @include box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0);
-    text-align: center;
-    height: 75%;
-    color: #84BCDE;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-#player header h1 {
-    font-size: 2em;
-    font-weight: bold;
-    font-family: 'Droid Serif';
-    padding: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-#player header .spinner {
-    height: 100%;
-    width: 10%;
-    position: relative;
-    margin: 0 auto;
-    display: none;
-}
-
-#wrapper {
+#layout {
     @include display-box;
-    @include box-orient(horizontal);
-    @include box-align(stretch);
+    height: 100%;
     width: 100%;
-    height: 85%;
+
+    @include box-sizing(border-box);
+    padding-top: 150px;
 }
 
-#sidebar {
-    padding: 5px 0;
+nav {
+    @include display-box;
+
+    @include box-orient(vertical);
     width: 20%;
+
+    a {
+        display: block;
+
+        padding: 10px 0;
+
+        svg {
+            height: 22px;
+            width: 22px;
+            vertical-align: middle;
+
+            margin-right: 5px;
+        }
+    }
 }
 
-#sidebar nav a {
-    display: block;
-    color: #84BCDE;
-    text-decoration: none;
-    padding: 5px 15px;
+section {
+    @include display-box;
+    @include box-orient(vertical);
+    @include box-flex(1);
+
+    width: 80%;
+    height: 100%;
 }
 
-#sidebar nav a:hover {
-    @include background-image(linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)));
-}
-
-#sidebar nav a.open {
-    text-shadow: rgba(0, 0, 0, 0.25) 0 1px;
-    @include background-image(linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)));
-}
-
-#sidebar .bottom {
-    bottom: 0;
+#player {
+    height: 150px;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.25);
-    @include box-shadow(rgba(0, 0, 0, 0.8) 1px -1px 5px);
-    @include border-top-right-radius(5px);
-}
-
-#sidebar .bottom a {
-    display: inline-block;
-    padding: 5px 15px;
-    text-decoration: none;
-}
-
-#sidebar .panel {
-    margin-left: 20px;
-    display: none;
-}
-
-#sidebar .panel a {
-    width: 30px;
-    padding: 5px 0;
-    text-align: center;
-    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 #main {
-    @include box-shadow(rgba(255, 255, 255, 0.1) -1px 0 0, rgba(0, 0, 0, 0.8) 0 1px 7px inset);
-    background: rgba(255, 255, 255, 0.05);
+    @include box-flex(1);
     overflow-y: scroll;
-    width: 80%;
 }
 
-#main h2 {
-    font-weight: bold;
-    font-size: 2em;
-    text-decoration: underline;
-    margin: 0.25em 0.5em;
-}
+.list {
 
-#main form {
-    margin: 15px;
-}
-
-#main nav {
-    @include background-image(linear-gradient(#484848, #484848));
-    @include box-shadow(rgba(0, 0, 0, 0.8) 0 1px 7px);
-    padding: 5px 10px 0;
-    display: block;
-}
-
-#main nav li {
-    display: inline-block;
-    padding: 5px 15px;
-    border: 1px solid rgba(0, 0, 0, 0.75);
-    border-bottom: 0 none;
-    @include border-top-radius(10px);
-}
-
-#main nav li.selected {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-table {
-    width: 100%;
-    max-height: 99%;
-    table-layout: fixed;
-    text-shadow: rgba(0, 0, 0, 0.25) 0 1px;
-}
-
-tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.75);
-    height: 1.5em;
-}
-
-td {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-thead tr {
-    border-bottom-width: 2px;
-}
-
-tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-tbody tr.current {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.songlink td:first-child {
-    text-align: right;
-    padding-right: 10px;
-    opacity: 0.5;
-    min-width: 25px;
-    text-shadow: none;
-}
-
-.spinner {
-    @include inline-block;
-
-    div {
-        @include opacity(0);
-        width: 12%;
-        height: 26%;
-        left: 44.5%;
-        top: 37%;
-        background: #C6C6C6;
-        position: absolute;
-        @include border-radius(50px);
-        @include box-shadow(0 0 3px rgba(0, 0, 0, 0.2));
-        @include experimental(animation-name, fade, -moz, -webkit, not -o, not -ms, not -khtml, official);
-        @include experimental(animation-duration, 1s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-        @include experimental(animation-timing-function, linear, -moz, -webkit, not -o, not -ms, not -khtml, official);
-        @include experimental(animation-iteration-count, infinite, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    li a,
+    .title {
+        @include display-box;
+        overflow: hidden;
+        padding: 5px 0 5px 15px;
     }
 
-    .bar1 {
-        @include transform(rotate(0deg) translate(0, -142%));
-        @include experimental(animation-delay, 0s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    .addplaylist {
+        width: 24px;
     }
 
-    .bar2 {
-        @include transform(rotate(30deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.9167s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    .songname {
+        @include box-flex(1);
     }
 
-    .bar3 {
-        @include transform(rotate(60deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    .artistname,
+    .albumname {
+        width: 30%;
     }
-
-    .bar4 {
-        @include transform(rotate(90deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.75s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar5 {
-        @include transform(rotate(120deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar6 {
-        @include transform(rotate(150deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.5833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar7 {
-        @include transform(rotate(180deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.5s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar8 {
-        @include transform(rotate(210deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.41667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar9 {
-        @include transform(rotate(240deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.333s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar10 {
-        @include transform(rotate(270deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.25s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar11 {
-        @include transform(rotate(300deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.1667s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-
-    .bar12 {
-        @include transform(rotate(330deg) translate(0, -142%));
-        @include experimental(animation-delay, -0.0833s, -moz, -webkit, not -o, not -ms, not -khtml, official);
-    }
-}
-
-@-webkit-keyframes fade {
-    from { opacity: 1; }
-    to { opacity: 0.25; }
-}
-
-@-moz-keyframes fade {
-    from { opacity: 1; }
-    to { opacity: 0.25; }
-}
-
-input {
-    border: 0 none;
-    background: rgba(255, 255, 255, 0.5);
-}
-
-input:focus {
-    @include box-shadow(rgba(0, 0, 0, 0.5) 0 0 5px);
 }

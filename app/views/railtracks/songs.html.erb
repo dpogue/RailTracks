@@ -1,28 +1,18 @@
-<table>
-  <thead>
-    <tr>
-      <th style="width: 40px;"></th>
-      <th style="width: 20px;"></th>
-      <th style="width: 20px;"></th>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Album</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @songs.each do |song| %>
-      <tr class="songlink" id="song-<%= song.id %>">
-        <td><%= song.track %></td>
-        <td><%= image_tag('add.png', :border=>0) %></td>
-        <td>
-          <a href="#" onClick="player.play_file(<%= song.id %>);return false;">
-            <%= image_tag('play.png', :border => 0) %>
-          </a>
-        </td>
-        <td><%= song.title %></td>
-        <td><%= song.artist.name unless song.artist.nil? %></td>
-        <td><%= song.album.name unless song.album.nil? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="list">
+  <li class="title">
+    <span class="addplaylist"></span>
+    <span class="songname">Title</span>
+    <span class="artistname">Artist</span>
+    <span class="albumname">Album</span>
+  </li>
+<% @songs.each do |song| %>
+  <li>
+    <a>
+      <span class="addplaylist"><%= image_tag('add.png', :border => 0) %></span>
+      <span class="songname"><%= song.title %></span>
+      <span class="artistname"><%= song.artist.name unless song.artist.nil? %></span>
+      <span class="albumname"><%= song.album.name unless song.album.nil? %></span>
+    </a>
+  </li>
+<% end %>
+</ul>
