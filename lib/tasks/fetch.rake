@@ -15,22 +15,24 @@ namespace :tracks do
           next
         end
 
-        artist = Artist.find_by_name(tags['artist'])
+        str_artist = tags['artist'].encode('UTF-8').strip
+        artist = Artist.find_by_name(str_artist)
         if artist.nil?
           artist = Artist.new
           begin
-            artist.name = tags['artist'].encode('UTF-8')
+            artist.name = str_artist
           rescue
             artist.name = 'UNICODE ERROR'
           end
           artist.save!
         end
 
-        album = Album.find_by_name_and_artist_id(tags['album'], artist.id)
+        str_album = tags['album'].encode('UTF-8').strip
+        album = Album.find_by_name_and_artist_id(str_album, artist.id)
         if album.nil? and !tags['album'].nil?
           album = Album.new
           begin
-            album.name = tags['album'].encode('UTF-8')
+            album.name = str_album
           rescue
             album.name = 'UNICODE ERROR'
           end
@@ -39,9 +41,10 @@ namespace :tracks do
           album.save!
         end
 
+        str_song = tags['title'].encode('UTF-8').strip
         song = Song.new
         begin
-          song.title = tags['title'].encode('UTF-8')
+          song.title = str_song
         rescue
           song.title = 'UNICODE ERROR'
         end
