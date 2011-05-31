@@ -6,11 +6,12 @@ class CreateSongs < ActiveRecord::Migration
       t.integer :track
       t.references :artist
       t.references :album
+      t.references :library
     end
 
-    add_index :songs, :artist_id, :name => 'artist_id_ix'
-    add_index :songs, :album_id, :name => 'album_id_ix'
-    add_index :songs, :file, :name => 'filename_ix'
+    add_index :songs, :artist_id
+    add_index :songs, :album_id
+    add_index :songs, :file, :unique => true
   end
 
   def self.down

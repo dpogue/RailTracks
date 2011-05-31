@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20110519170410) do
     t.integer "artist_id"
   end
 
-  add_index "albums", ["artist_id"], :name => "album_artist_id_ix"
+  add_index "albums", ["artist_id"], :name => "index_albums_on_artist_id"
 
   create_table "artists", :force => true do |t|
     t.string "name"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20110519170410) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "libraries", ["path"], :name => "index_libraries_on_path", :unique => true
 
   create_table "settings", :force => true do |t|
     t.string   "var",                      :null => false
@@ -52,13 +54,13 @@ ActiveRecord::Schema.define(:version => 20110519170410) do
     t.integer "library_id"
   end
 
-  add_index "songs", ["album_id"], :name => "album_id_ix"
-  add_index "songs", ["artist_id"], :name => "artist_id_ix"
-  add_index "songs", ["file"], :name => "filename_ix"
+  add_index "songs", ["album_id"], :name => "index_songs_on_album_id"
+  add_index "songs", ["artist_id"], :name => "index_songs_on_artist_id"
+  add_index "songs", ["file"], :name => "index_songs_on_file", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -67,11 +69,14 @@ ActiveRecord::Schema.define(:version => 20110519170410) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "username"
+    t.boolean  "admin",                                 :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

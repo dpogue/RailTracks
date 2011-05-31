@@ -8,13 +8,10 @@ class CreateLibraries < ActiveRecord::Migration
       t.timestamps
     end
 
-    change_table :songs do |t|
-      t.references :library
-    end
+    add_index :libraries, :path, :unique => true
   end
 
   def self.down
     drop_table :libraries
-    remove_column :songs, :library
   end
 end
