@@ -1,0 +1,16 @@
+<svg viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="circle" cx="15.583415" cy="15.702159" r="15.226202" fx="15.583415" fy="15.702159" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color:#000000;stop-opacity:0.39421815" offset="0" />
+      <stop style="stop-color:#000000;stop-opacity:0.79369253" offset="1" />
+    </radialGradient>
+    <linearGradient id="x" gradientTransform="matrix(0.74658151,0,0,0.74850413,4.0396285,4.0391425)" x1="6.3416856" y1="6.2986094" x2="25.7019" y2="6.2986094" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color:#ffffff;stop-opacity:1" offset="0" />
+      <stop style="stop-color:#ffffff;stop-opacity:0.75427067" offset="1" />
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="m 30.809617,15.702159 a 15.226202,15.226202 0 1 1 -30.45240398,0 15.226202,15.226202 0 1 1 30.45240398,0 z" transform="translate(0.41658497,0.29784107)" style="fill:url(#circle);fill-opacity:1;stroke:none" />
+    <path d="m 15.991543,17.813191 -5.273676,5.308718 C 10.112503,23.731295 8.2903691,21.909161 8.8957326,21.299775 L 14.169409,15.991057 8.8957326,10.717381 C 8.2912676,10.112916 10.113402,8.3083022 10.717867,8.9127672 l 5.273676,5.2736768 5.273677,-5.3087178 c 0.611185,-0.6152454 2.452872,1.2264368 1.839654,1.8396548 l -5.308717,5.308717 5.308717,5.308718 c 0.598625,0.598625 -1.205988,2.385718 -1.804613,1.787093 l -5.308718,-5.308718" style="fill:url(#x);fill-opacity:1;stroke:none" />
+  </g>
+</svg>

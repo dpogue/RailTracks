@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   def setlayout
     return 'unauth' if devise_controller?
+    return false if pjax?
     return 'application'
   end
 end

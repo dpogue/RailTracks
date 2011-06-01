@@ -1,0 +1,26 @@
+<ul class="list">
+  <li class="title">
+    <span class="addlibrary">&nbsp;</span>
+    <span class="libpath">Library Path</span>
+    <span class="libtime">Last Scanned</span>
+  </li>
+<% @libraries.each do |lib| %>
+  <li class="row" id="lib-<%= lib.id %>">
+    <span class="addlibrary">
+      <%= link_to library_path(lib), :method => :delete, :remote => true do %>
+        &mdash;
+      <% end %>
+    </span>
+    <span class="libpath"><%= lib.path %></span>
+    <span class="libtime"><%= (lib.scanned.to_i == 0) ? 'Never' : time_ago_in_words(lib.scanned) %></span>
+  </li>
+<% end %>
+  <li id="newlibrary">
+  <%= link_to new_library_path, :remote => true, :class => 'row' do %>
+      <span class="addlibrary">
+          +
+      </span>
+      <span class="libpath">Add a New Library&hellip;</span>
+    <% end %>
+  </li>
+</ul>

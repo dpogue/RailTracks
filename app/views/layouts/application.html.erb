@@ -49,8 +49,8 @@
     });
 
     /* Canvas fallback for SVG icons */
-    if (!!document.createElementNS &&
-        !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect)
+    function hasSVG() { return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect; }
+    if (!hasSVG())
     {
       $.getScript('http://canvg.googlecode.com/svn/trunk/rgbcolor.js', function() {
         $.getScript('http://canvg.googlecode.com/svn/trunk/canvg.js', function() {

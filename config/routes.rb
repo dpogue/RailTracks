@@ -1,6 +1,8 @@
 RailsTunes::Application.routes.draw do
   devise_for :users
 
+  resources :libraries, :only => [:index, :new, :create, :show, :destroy]
+
   root :to => 'railtracks#index'
 
   match 'media/:action(/:id)' => 'media'

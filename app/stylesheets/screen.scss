@@ -67,27 +67,43 @@ section {
 #main {
     @include box-flex(1);
     overflow-y: scroll;
+    position: relative;
 }
 
 .list {
 
-    li a,
-    .title {
+    .title,
+    .row {
         @include display-box;
         overflow: hidden;
         padding: 5px 0 5px 15px;
+
+        a {
+            display: inline;
+        }
     }
 
-    .addplaylist {
+    .addplaylist,
+    .addlibrary {
         width: 24px;
     }
 
-    .songname {
+    .songname,
+    .libpath {
         @include box-flex(1);
     }
 
     .artistname,
-    .albumname {
+    .albumname,
+    .libtime {
         width: 30%;
     }
+}
+
+#formpanel {
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 10%;
+    padding: 25px;
 }

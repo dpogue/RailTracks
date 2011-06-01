@@ -7,7 +7,7 @@
   </li>
 <% @songs.each do |song| %>
   <li>
-    <a>
+    <a class="row">
       <span class="addplaylist"><%= image_tag('add.png', :border => 0) %></span>
       <span class="songname"><%= song.title %></span>
       <span class="artistname"><%= song.artist.name unless song.artist.nil? %></span>

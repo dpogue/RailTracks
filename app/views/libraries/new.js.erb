@@ -1,0 +1,28 @@
+$(function() {
+  if ($('#formpanel').length) {
+    /* Treat the form as being modal */
+    return;
+  }
+
+  var form = '';
+  form += '<div id="formpanel">';
+  form += '  <a class="closebtn">';
+  form += '    <%= inline_svg(image_path('close.svg')) %>';
+  form += '  </a>';
+  form += '  <%= form_for @lib, :remote => true do |f| %>';
+  form += '    <p><%= f.label :path %><br>';
+  form += '    <%= f.text_field :path %></p>';
+
+  form += '    <p><%= f.check_box :recursive %> <%= f.label :recursive %></p>';
+
+  form += '    <%= submit_tag 'Create' %>';
+  form += '  <% end %>';
+  form += '</div>';
+
+  $('#main').append(form);
+
+  $('#formpanel .closebtn').bind('click', function(e) {
+    $('#formpanel').remove();
+    e.preventDefault();
+  });
+});

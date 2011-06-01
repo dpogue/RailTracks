@@ -1,0 +1,15 @@
+$(function() {
+  var newlib = '';
+  newlib += '<li class="row" id="lib-<%= @lib.id %>">';
+  newlib += '  <span class="addlibrary">';
+  newlib += '    <%= link_to library_path(@lib), :method => :delete, :remote => true do %>';
+  newlib += '      &mdash;';
+  newlib += '    <% end %>';
+  newlib += '  </span>';
+  newlib += '  <span class="libpath"><%= @lib.path %></span>';
+  newlib += '  <span class="libtime"><%= (@lib.scanned.to_i == 0) ? 'Never' : time_ago_in_words(@lib.scanned) %></span>';
+  newlib += '</li>';
+
+  $('#newlibrary').before(newlib);
+  $('#formpanel').remove();
+});
