@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
     return false if pjax?
     return 'application'
   end
+
 end

@@ -3,7 +3,7 @@ $(function() {
   newlib += '<li class="row" id="lib-<%= @lib.id %>">';
   newlib += '  <span class="addlibrary">';
   newlib += '    <%= link_to library_path(@lib), :method => :delete, :remote => true do %>';
-  newlib += '      &mdash;';
+  newlib += '      <%= inline_svg(image_path('remove.svg')) %>';
   newlib += '    <% end %>';
   newlib += '  </span>';
   newlib += '  <span class="libpath"><%= @lib.path %></span>';

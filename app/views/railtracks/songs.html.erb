@@ -8,7 +8,9 @@
 <% @songs.each do |song| %>
   <li>
     <a class="row">
-      <span class="addplaylist"><%= image_tag('add.png', :border => 0) %></span>
+      <span class="addplaylist">
+        <%= inline_svg(image_path('add.svg')) %>
+      </span>
       <span class="songname"><%= song.title %></span>
       <span class="artistname"><%= song.artist.name unless song.artist.nil? %></span>
       <span class="albumname"><%= song.album.name unless song.album.nil? %></span>

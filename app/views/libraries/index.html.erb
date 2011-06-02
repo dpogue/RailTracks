@@ -8,7 +8,7 @@
   <li class="row" id="lib-<%= lib.id %>">
     <span class="addlibrary">
       <%= link_to library_path(lib), :method => :delete, :remote => true do %>
-        &mdash;
+        <%= inline_svg(image_path('remove.svg')) %>
       <% end %>
     </span>
     <span class="libpath"><%= lib.path %></span>
@@ -18,7 +18,7 @@
   <li id="newlibrary">
   <%= link_to new_library_path, :remote => true, :class => 'row' do %>
       <span class="addlibrary">
-          +
+        <%= inline_svg(image_path('add.svg')) %>
       </span>
       <span class="libpath">Add a New Library&hellip;</span>
     <% end %>
