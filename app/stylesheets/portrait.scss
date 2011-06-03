@@ -1,0 +1,44 @@
+@import "compass";
+
+#layout {
+    @include box-orient(vertical);
+    padding: 0;
+}
+
+nav {
+    @include box-orient(horizontal);
+    @include box-pack(center);
+    @include box-ordinal-group(2);
+    width: 100%;
+    height: 53px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    a {
+        padding: 0 5px;
+
+        svg {
+            height: 48px;
+            width: 48px;
+            margin: 0;
+            @include opacity(1);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+section {
+    width: 100%;
+}
+
+#player {
+    position: static;
+}
+
+.list {
+    .title {
+        display: none;
+    }
+}

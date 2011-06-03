@@ -1,5 +1,6 @@
 class RailtracksController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_security
 
   def index
     render :layout => !pjax?
@@ -60,5 +61,17 @@ class RailtracksController < ApplicationController
       k
     }
     render :action => 'songs', :layout => !pjax?
+  end
+
+  protected
+  def check_security
+    if current_user.try(:admin?)
+      if current_user.username == 'admin'
+        current_user.username = 'Change_Me'
+        current_user.save!
+        flash[:notice] = "You must change the default admin credentials for security purposes."
+        redirect_to edit_user_registration_path
+      end
+    end
   end
 end

@@ -113,3 +113,25 @@ section {
     top: 10%;
     padding: 25px;
 }
+
+.unauth {
+    h2 {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+
+        width: 50%;
+        margin: 0 25%;
+        padding: 2em 0 0 0;
+    }
+
+    form {
+        @include box-shadow(rgba(0, 0, 0, 0.25) 0 0 15px);
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        text-align: center;
+
+        margin: 1em 25% 0;
+        width: 50%;
+        padding: 10px;
+    }
+}
