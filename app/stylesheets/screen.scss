@@ -48,12 +48,11 @@ nav {
 }
 
 section {
-    @include display-box;
-    @include box-orient(vertical);
     @include box-flex(1);
 
     width: 80%;
     height: 100%;
+    display: block;
 }
 
 #player {
@@ -68,6 +67,8 @@ section {
     @include box-flex(1);
     overflow-y: scroll;
     position: relative;
+
+    height: 100%;
 }
 
 .list {

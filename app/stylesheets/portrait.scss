@@ -30,15 +30,25 @@ nav {
 }
 
 section {
+    @include display-box;
+    @include box-orient(vertical);
     width: 100%;
 }
 
 #player {
     position: static;
+    height: 64px;
 }
 
 .list {
     .title {
         display: none;
+    }
+}
+
+.unauth {
+    form {
+        width: auto;
+        margin: 1em 1em 0;
     }
 }

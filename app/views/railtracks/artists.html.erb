@@ -1,8 +1,10 @@
 <ul class="list">
-  <li class="title">Artist Name</li>
+  <li class="title"><span>Artist Name</span></li>
 <% @artists.each do |artist| %>
   <li>
-  <%= link_to artist.name, {:action => 'artist', :id => artist.id}, {:class => 'row', 'data-pjax' => '#main' } %>
+  <%= link_to({:action => 'artist', :id => artist.id}, {:class => 'row', 'data-pjax' => '#main' }) do %>
+    <span><%= artist.name %></span>
+  <% end %>
   </li>
 <% end %>
 </ul>
@@ -21,9 +23,12 @@ function load_artists(page)
           $('<a />', {
               'href':'/artist/'+data[i].artist.id,
               'class': 'row',
-              'data-pjax':'#main',
+              'data-pjax':'#main'
+          }).append(
+            $('<span />', {
               text:data[i].artist.name
-          })
+            })
+          )
         )
       );
     }
