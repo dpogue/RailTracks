@@ -1,0 +1,23 @@
+<svg viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" id="playerPlay">
+  <defs>
+    <linearGradient id="lg2" gradientUnits="userSpaceOnUse" x1="71.288956" y1="124.11652" x2="70.826942" y2="95" gradientTransform="translate(-45.00042,-71.09425)">
+      <stop style="stop-color:#adb0a8;stop-opacity:1;" offset="0" />
+      <stop style="stop-color:#464744;stop-opacity:1" offset="1" />
+    </linearGradient>
+    <radialGradient id="radg" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5.324342e-2,-0.836238,2.019473,0.128568,-151.9195,108.0768)" cx="107.5884" cy="83.990814" fx="107.5884" fy="83.990814" r="12.551644">
+      <stop offset="0" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="1" style="stop-color:#d3d7cf" />
+    </radialGradient>
+    <linearGradient id="lg1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.128181,0,0,1.128181,-53.99314,-83.36009)" x1="70.913956" y1="101.74152" x2="70.951942" y2="88.923729">
+      <stop offset="0" style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop offset="1" style="stop-color:#000000;stop-opacity:1;" />
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M 12,39.5 L 12,9 L 38.06998,23.817079 L 12,39.5 z " style="color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#lg1);stroke-width:1.99999833;stroke-linecap:square;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;opacity:0.15" />
+    <path style="color:#000000;fill:url(#radg);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00000036;stroke-linecap:square;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" d="M 12.49946,37.81149 L 12.49946,10.000005 L 36.602747,23.905748 L 12.49946,37.81149 z " />
+    <path style="color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#lg2);stroke-width:1.00000036;stroke-linecap:square;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" d="M 12.49946,37.81149 L 12.49946,10.000005 L 36.602747,23.905748 L 12.49946,37.81149 z " />
+    <path style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" d="M 12.99946,10.87449 L 12.99946,36.93699 L 35.59321,23.90574 L 12.99946,10.87449 z M 13.99946,12.62449 L 33.56196,23.90574 L 13.99946,35.18699 L 13.99946,12.62449 z " />
+    <path style="opacity:0.5;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:block;overflow:visible" d="M 13.9375,12.5625 L 13.9375,24.25 C 18.206698,24.205215 23.101656,23.904436 31,22.375 L 13.9375,12.5625 z " />
+  </g>
+</svg>

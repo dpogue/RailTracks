@@ -5,3 +5,17 @@ end %>
 <%= link_to({:controller => 'railtracks', :action => 'artists'}, {'data-pjax' => '#main'}) do
   inline_svg(image_path('artists.svg')) + content_tag(:span, 'Artists')
 end %>
+
+<%= link_to({:controller => 'railtracks', :action => 'index'}, {'data-pjax' => '#main'}) do
+  inline_svg(image_path('playlists.svg')) + content_tag(:span, 'Playlist')
+end %>
+
+<%= link_to({:controller => 'railtracks', :action => 'index'}, {'data-pjax' => '#main'}) do
+  inline_svg(image_path('settings.svg')) + content_tag(:span, 'Settings')
+end %>
+
+<% if current_user.try(:admin?) %>
+<%= link_to(libraries_path, {'data-pjax' => '#main'}) do
+  inline_svg(image_path('libraries.svg')) + content_tag(:span, 'Libraries')
+end %>
+<% end %>

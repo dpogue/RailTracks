@@ -61,6 +61,12 @@ section {
     top: 0;
     left: 0;
     width: 100%;
+
+    #playerPlay,
+    #playerStop {
+        height: 128px;
+        width: 128px;
+    }
 }
 
 #main {
@@ -72,6 +78,12 @@ section {
 }
 
 .list {
+
+    li,
+    li > a {
+        width: 100%;
+        @include box-sizing(border-box);
+    }
 
     .title,
     .row {

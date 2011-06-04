@@ -37,7 +37,13 @@ section {
 
 #player {
     position: static;
-    height: 64px;
+    height: auto;
+
+    #playerPlay,
+    #playerStop {
+        height: 64px;
+        width: 64px;
+    }
 }
 
 .list {
