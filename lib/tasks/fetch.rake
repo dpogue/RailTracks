@@ -17,12 +17,11 @@ namespace :tracks do
         end
 
         str_artist = tags['artist']
-        begin
-          str_artist = str_artist.encode('UTF-8').strip unless str_artist.nil?
-        rescue
+        unless str_artist.force_encoding('UTF-8').valid_encoding?
           puts "INVALID UTF8 TAG: Artist"
           next
         end
+        str_artist.encode!('UTF-8').strip!
 
         artist = Artist.find_by_name(str_artist)
         if artist.nil?
@@ -32,9 +31,9 @@ namespace :tracks do
         end
 
         str_album = tags['album']
-        begin
-          str_album = str_album.encode('UTF-8').strip unless str_album.nil?
-        rescue
+        if !str_album.nil? and str_album.force_encoding('UTF-8').valid_encoding?
+          str_album.encode!('UTF-8').strip!
+        else
           # We'll cheat a bit if the album is invalid, just use no album
           str_album = nil
         end
@@ -49,12 +48,11 @@ namespace :tracks do
         end
 
         str_song = tags['title']
-        begin
-          str_song = str_song.encode('UTF-8').strip unless str_song.nil?
-        rescue
+        unless str_song.force_encoding('UTF-8').valid_encoding?
           puts "INVALID UTF8 TAG: Title"
           next
         end
+        str_song.encode!('UTF-8').strip!
 
         song = Song.find_by_file(f)
         song = Song.new if song.nil?
