@@ -1,0 +1,56 @@
+<ul class="list">
+  <li class="title"><span>Artist Name</span></li>
+<% @artists.each do |artist| %>
+  <li>
+  <%= link_to(artist, {:class => 'row', 'data-pjax' => '#main' }) do %>
+    <span><%= artist.name %></span>
+  <% end %>
+  </li>
+<% end %>
+</ul>
+
+<script>
+function load_artists(page)
+{
+  var success = function(data, stat, jqxhr)
+  {
+    var ii = data.length;
+    for (var i = 0; i < ii; i++)
+    {
+      $('ul.list').append(
+        $('<li />').append(
+          $('<a />', {
+              'href':'/artists/'+data[i].artist.id,
+              'class': 'row',
+              'data-pjax':'#main'
+          }).append(
+            $('<span />', {
+              text:data[i].artist.name
+            })
+          )
+        )
+      );
+    }
+
+    if (jqxhr.status === 204)
+    {
+      return;
+    }
+
+    load_artists(page+1);
+  };
+
+  var request = $.ajax({
+    url: '/artists.json?page='+page,
+    async: true,
+    type: 'GET',
+    success: success
+  });
+
+  $('a[data-pjax]').bind('click', function() {
+    request.abort();
+  });
+}
+
+load_artists(1);
+</script>

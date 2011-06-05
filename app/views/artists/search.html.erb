@@ -1,0 +1,10 @@
+<ul class="list">
+  <li class="title"><span>Artist Name</span></li>
+<% @artists.each do |artist| %>
+  <li>
+  <%= link_to(artist, {:class => 'row', 'data-pjax' => '#main' }) do %>
+    <span><%= artist.name %></span>
+  <% end %>
+  </li>
+<% end %>
+</ul>

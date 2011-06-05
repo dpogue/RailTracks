@@ -2,7 +2,7 @@
   inline_svg(image_path('songs.svg')) + content_tag(:span, 'Songs')
 end %>
 
-<%= link_to({:controller => 'railtracks', :action => 'artists'}, {'data-pjax' => '#main'}) do
+<%= link_to(artists_path, {'data-pjax' => '#main'}) do
   inline_svg(image_path('artists.svg')) + content_tag(:span, 'Artists')
 end %>
 

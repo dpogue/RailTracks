@@ -3,11 +3,14 @@ RailsTunes::Application.routes.draw do
 
   resources :libraries, :only => [:index, :new, :create, :show, :destroy]
 
+  resources :artists, :only => [:index, :show]
+  match 'artists/search/:q' => 'artists#search', :via => :get, :constraints => {:q => /[A-Z0-9]/}, :as => 'search_artists'
+
   root :to => 'railtracks#index'
 
   match 'media/:action(/:id)' => 'media'
   match 'settings/(:action(/:id))' => 'settings'
-  match ':action(/:id)' => 'railtracks'
+  match 'songs' => 'railtracks#songs'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
