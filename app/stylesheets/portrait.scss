@@ -39,10 +39,26 @@ section {
     position: static;
     height: auto;
 
+    #transport {
+        display: inline-block;
+        width: auto;
+    }
+
     #playerPlay,
     #playerStop {
         height: 64px;
         width: 64px;
+    }
+
+    header {
+        @include border-radius(0);
+        background: transparent;
+        display: inline-block;
+        vertical-align: top;
+        width: auto;
+        height: 64px;
+        position: static;
+        text-align: justify;
     }
 }
 

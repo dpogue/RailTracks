@@ -53,11 +53,14 @@
       $('a[data-pjax]').pjax();
       $('#main').bind('end.pjax',function(){
         if (player) { player.on_page_load(); }
-        $('#main').scrollTop();
+        $('#main').scrollTop(0);
       });
     <% if notice %>
       $('#notice').bind('click', function() { $(this).fadeOut('slow'); });
     <% end %>
+      if (window.localStorage && window.localStorage['rtbackground']) {
+        $('body').css('background', window.localStorage['rtbackground']);
+      }
     });
 
     /* Canvas fallback for SVG icons */
