@@ -5,7 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:bold);
 
 body {
-    background-color: #2F2F2F; /*steelblue;*/
+    background-color: #2F2F2F;
     font-family: 'Droid Sans';
     color: rgba(255, 255, 255, 0.75);
 }
@@ -83,8 +83,10 @@ nav {
         }
     }
 
-    .row:hover {
+    .row:hover,
+    a.row:focus {
         @include background-image(linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.15)));
+        outline: none;
     }
 
     li:nth-child(even) {
