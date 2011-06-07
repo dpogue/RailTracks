@@ -1,0 +1,79 @@
+<ul class="list">
+  <li class="title">
+    <span class="addplaylist"></span>
+    <span class="songname">Title</span>
+    <span class="artistname">Artist</span>
+    <span class="albumname">Album</span>
+  </li>
+<% @songs.each do |song| %>
+  <li id="song-<%= song.id %>">
+    <a class="row">
+      <span class="addplaylist">
+        <%= inline_svg(image_path('add.svg')) %>
+      </span>
+      <span class="songname"><%= song.title %></span>
+      <span class="artistname"><%= song.artist.name unless song.artist.nil? %></span>
+      <span class="albumname"><%= song.album.name unless song.album.nil? %></span>
+    </a>
+  </li>
+<% end %>
+</ul>
+
+<script>
+function load_songs(page)
+{
+  var success = function(data, stat, jqxhr)
+  {
+    if (jqxhr.status === 204)
+    {
+      return;
+    }
+
+    var ii = data.length;
+    for (var i = 0; i < ii; i++)
+    {
+      $('ul.list').append(
+        $('<li />', {
+          'id': 'song-'+data[i].id
+        }).append(
+          $('<a />', {
+              'class': 'row',
+          }).append(
+            '<span class="addplaylist"><%= inline_svg(image_path('add.svg')) %></span>'
+          ).append(
+            $('<span />', {
+              'class': 'songname',
+              text: data[i].title
+            })
+          ).append(
+            $('<span />', {
+              'class': 'artistname',
+              text: data[i].artist
+            })
+          ).append(
+            $('<span />', {
+              'class': 'albumname',
+              text: data[i].album
+            })
+          )
+        )
+      );
+    }
+
+    load_songs(page+1);
+  };
+
+  var request = $.ajax({
+    url: '/songs.json?page='+page,
+    async: true,
+    type: 'GET',
+    success: success
+  });
+
+  $('a[data-pjax]').bind('click', function() {
+    request.abort();
+  });
+}
+
+load_songs(1);
+</script>

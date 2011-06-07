@@ -1,0 +1,22 @@
+<ul class="list">
+  <li class="title">
+    <span class="tracknum"></span>
+    <span class="addplaylist"></span>
+    <span class="songname">Title</span>
+    <span class="artistname">Artist</span>
+    <span class="albumname">Album</span>
+  </li>
+<% @songs.each do |song| %>
+  <li>
+    <a class="row">
+      <span class="tracknum"><%= song.track %></span>
+      <span class="addplaylist">
+        <%= inline_svg(image_path('add.svg')) %>
+      </span>
+      <span class="songname"><%= song.title %></span>
+      <span class="artistname"><%= song.artist.name unless song.artist.nil? %></span>
+      <span class="albumname"><%= song.album.name unless song.album.nil? %></span>
+    </a>
+  </li>
+<% end %>
+</ul>

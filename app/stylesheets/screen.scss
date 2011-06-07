@@ -124,6 +124,14 @@ section {
         }
     }
 
+    .tracknum {
+        text-align: right;
+        font-style: italic;
+        width: 32px;
+        padding-right: 10px;
+        @include opacity(0.65);
+    }
+
     .songname,
     .libpath {
         @include box-flex(1);

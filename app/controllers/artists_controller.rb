@@ -26,7 +26,7 @@ class ArtistsController < ApplicationController
       k << s.title.sub(/[^a-zA-Z 0-9]+/,'').downcase
       k
     }
-    render 'railtracks/songs'
+    respond_with(@songs)
   end
 
   def search
