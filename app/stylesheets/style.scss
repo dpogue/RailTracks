@@ -8,6 +8,8 @@ body {
     background-color: #2F2F2F;
     font-family: 'Droid Sans';
     color: rgba(255, 255, 255, 0.75);
+
+    @include transition(background-color, 1s, linear, 0);
 }
 
 a {
