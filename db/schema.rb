@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20110519170410) do
     t.string  "title"
     t.string  "file"
     t.integer "track"
+    t.float   "length"
     t.integer "artist_id"
     t.integer "album_id"
     t.integer "library_id"

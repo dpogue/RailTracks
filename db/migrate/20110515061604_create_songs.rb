@@ -4,6 +4,7 @@ class CreateSongs < ActiveRecord::Migration
       t.string :title
       t.string :file
       t.integer :track
+      t.float :length
       t.references :artist
       t.references :album
       t.references :library

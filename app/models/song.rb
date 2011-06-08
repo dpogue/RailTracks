@@ -9,6 +9,7 @@ class Song < ActiveRecord::Base
       :title => self.title,
       :artist => self.artist.name,
       :album => (self.album.nil? ? '' : self.album.name),
+      :length => self.length,
       :track => self.track
     }
   end

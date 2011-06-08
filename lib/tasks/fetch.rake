@@ -9,7 +9,8 @@ namespace :tracks do
       p += '**/' if lib.recursive
       Dir.glob(p + '*.mp3').each do |f|
         print f + ' :: '
-        tags = Mp3Info.open(f, :encoding => 'utf-8').tag
+        info = Mp3Info.open(f, :encoding => 'utf-8')
+        tags = info.tag
 
         if tags['artist'].nil? or tags['title'].nil?
           puts "Missing tag information"
@@ -58,6 +59,7 @@ namespace :tracks do
         song = Song.new if song.nil?
         song.title = str_song
         song.track = tags['tracknum']
+        song.length = info.length
         song.artist = artist
         song.album = album
         song.library = lib
