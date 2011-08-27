@@ -28,9 +28,32 @@ class SongsController < ApplicationController
       end
 
       format.mp3 do
+        f = File.open(song.file, 'rb')
+
+        response.headers['Content-Type'] = 'audio/mp3'
+        response.headers['Content-Length'] = f.size.to_s
+        response.headers['X-Content-Duration'] = song.length.to_s
+        response.headers['Content-Disposition'] = 'inline'
+
+        self.response_body = proc do |response, output|
+          while (d = f.read(1024))
+            response.write d
+          end
+        end
       end
 
       format.oga do
+        response.headers['Content-Type'] = 'audio/ogg'
+        response.headers['X-Content-Duration'] = song.length.to_s
+        response.headers['Content-Disposition'] = 'inline'
+
+        self.response_body = proc do |response, output|
+          IO.popen("mpg123 -w - \"#{song.file}\" | oggenc -") do |f|
+            while (d = f.read(1024))
+              response.write d
+            end
+          end
+        end
       end
     end
   end
@@ -41,5 +64,12 @@ class SongsController < ApplicationController
                        :order => 'upper(title)')
 
     respond_with(@songs)
+  end
+end
+
+#HAAAAAACK
+class Rack::Response
+  def close
+    @body.close if @body.respond_to?(:close)
   end
 end
